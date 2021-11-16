@@ -55,11 +55,11 @@ class LoginContainer extends Component {
         <h2 className="text-center">Minha Conta</h2>
         <div className="flex-1 text-field_input">
           <TextField
-            id="outlined-required"
             required
+            id="outlined-required"
             label="Email"
+            variant="standard"
             fullWidth={true}
-            variant="outlined"
             value={email}
             onChange={(e) => this.onChangeInput("email", e)}
           />
@@ -68,7 +68,7 @@ class LoginContainer extends Component {
             required
             label="Senha"
             fullWidth={true}
-            variant="outlined"
+            variant="standard"
             value={senha}
             type={showPassword ? "text" : "Password"}
             onChange={(e) => this.onChangeInput("senha", e)}

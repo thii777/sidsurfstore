@@ -124,7 +124,7 @@ class FormularioDados extends Component {
                 onChange={(e) => this.onChangeInput("telefone", e.target.value)}
               />
             </div>
-            <div className="flex-1">
+            {/* <div className="flex-1">
               <FormSimples
                 value={dataDeNascimento}
                 name="dataDeNascimento"
@@ -135,7 +135,7 @@ class FormularioDados extends Component {
                   this.onChangeInput("dataDeNascimento", e.target.value)
                 }
               />
-            </div>
+            </div> */}
           </div>
           <div className="flex horizontal">
             <div className="flex-3">
@@ -190,7 +190,7 @@ class FormularioDados extends Component {
                 onChange={(e) => this.onChangeInput("cidade", e.target.value)}
               />
             </div>
-            <div className="form-input">
+            {/* <div className="form-input">
               <label>Estado</label>
               <select name="estado">
                 <option>Selecione seu estado</option>
@@ -200,7 +200,7 @@ class FormularioDados extends Component {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
           </div>
           <FormSimples
             value={cep}

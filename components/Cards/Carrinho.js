@@ -12,12 +12,12 @@ class CardCarrinho extends Component {
     this.setState({ cartQtd: getCountItemsCart() });
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps, "prevProps")
-  //   if (this.state.cartQtd !== this.context.state.qtd) {
-  //   this.setState({ cartQtd: this.context.state.qtd });
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    console.log(prevProps, "prevProps")
+    if (this.state.cartQtd !== this.context.state.qtd) {
+    this.setState({ cartQtd: this.context.state.qtd });
+    }
+  }
 
   render() {
     return (

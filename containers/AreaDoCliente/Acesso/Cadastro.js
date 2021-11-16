@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 
+import { toast } from "react-toastify";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+
 import FormSimples from "../../../components/Inputs/FormSimples";
 import { connect } from "react-redux";
 import actions from "../../../redux/actions";
-
 import { ESTADOS } from "../../../utils";
 import { getCookie } from "../../../utils/cookie";
-import { toast } from "react-toastify";
-
 import cepData from "../../helper/cepData";
-
-import {
-  formatCPF,
-  formatCEP,
-  formatNumber,
-} from "../../../utils/format";
+import { formatCPF, formatCEP, formatNumber } from "../../../utils/format";
 import { validateCPF, validateEmail } from "../../../utils/validate";
 
 class CadastroContainer extends Component {
   state = {
+    showPassword: false,
     userName: "",
     email: "",
     password: "",
@@ -67,7 +66,7 @@ class CadastroContainer extends Component {
         this.setState({ street: addressComplete.logradouro });
         this.setState({ neighborhood: addressComplete.bairro });
         this.setState({ city: addressComplete.localidade });
-        this.setState({ state: addressComplete.uf });
+        this.setState({ state_code: addressComplete.uf });
       }
 
       if (addressComplete.erro) {
@@ -75,56 +74,75 @@ class CadastroContainer extends Component {
         this.setState({ street: "" });
         this.setState({ neighborhood: "" });
         this.setState({ city: "" });
-        this.setState({ state: "" });
+        this.setState({ state_code: "" });
 
         return alert("Por favor, digite um CEP valido");
       }
     }
   }
 
+  onChangeShowPassword = async () => {
+    this.setState({ showPassword: !this.state.showPassword });
+  };
+
   renderCustomer() {
-    const { email, password, userName, cpf, cellphone } = this.state;
+    const { email, password, userName, cpf, cellphone, showPassword } =
+      this.state;
 
     return (
       <div>
-        <FormSimples
+        <TextField
+          required
+          id="outlined-required"
           label="Nome completo"
+          variant="standard"
+          fullWidth={true}
           value={userName}
-          name="userName"
-          type="text"
-          placeholder="nome"
           onChange={(e) => this.onChangeInput("userName", e.target.value)}
         />
-        <FormSimples
+        <TextField
+          required
+          id="outlined-required"
           label="CPF"
+          variant="standard"
+          fullWidth={true}
           value={cpf}
-          name="cpf"
-          type="text"
-          placeholder="cpf"
           onChange={(e) => this.onChangeInput("cpf", formatCPF(e.target.value))}
         />
-        <FormSimples
+        <TextField
+          required
+          id="outlined-required"
           label="Email"
+          variant="standard"
+          fullWidth={true}
           value={email}
-          name="email"
-          type="email"
-          placeholder="email"
           onChange={(e) => this.onChangeInput("email", e.target.value)}
         />
-        <FormSimples
-          label="Senha"
+        <TextField
+          id="outlined-required"
+          required
+          label="password"
+          fullWidth={true}
+          variant="standard"
           value={password}
-          name="password"
-          type="password"
-          placeholder="senha"
+          type={showPassword ? "text" : "Password"}
           onChange={(e) => this.onChangeInput("password", e.target.value)}
+          InputProps={{
+            endAdornment: showPassword ? (
+              <RemoveRedEyeIcon />
+            ) : (
+              <VisibilityOffIcon />
+            ),
+            onClick: () => this.onChangeShowPassword(),
+          }}
         />
-        <FormSimples
-          label="Telefone"
+        <TextField
+          required
+          id="outlined-required"
+          label="telefone"
+          variant="standard"
+          fullWidth={true}
           value={cellphone}
-          name="cellphone"
-          type="text"
-          placeholder="11-9999-9999"
           onChange={(e) => this.onChangeInput("cellphone", e.target.value)}
         />
       </div>
@@ -144,81 +162,94 @@ class CadastroContainer extends Component {
 
     return (
       <div>
-        {this.renderCustomer()}
-        <FormSimples
-          value={zipcode}
-          name="CEP"
-          placeholder="12345-678"
+        {/* {this.renderCustomer()} */}
+        <TextField
+          required
+          id="outlined-required"
           label="Cep"
+          variant="standard"
+          fullWidth={true}
+          value={zipcode}
           onChange={(e) => this.handleCepData(formatCEP(e.target.value))}
         />
         <div className="flex horizontal">
           <div className="flex-3">
-            <FormSimples
-              value={street}
-              name="street"
-              placeholder="Endereço"
+            <TextField
+              required
+              id="outlined-required"
               label="Endereço"
+              variant="standard"
+              fullWidth={true}
+              value={street}
               onChange={(e) => this.onChangeInput("street", e.target.value)}
             />
           </div>
           <div className="flex-1">
-            <FormSimples
-              value={number}
-              name="numero"
-              placeholder="Número"
+            <TextField
+              required
+              id="outlined-required"
               label="Numero"
+              variant="standard"
+              fullWidth={true}
+              value={number}
               onChange={(e) =>
                 this.onChangeInput("number", formatNumber(e.target.value))
               }
             />
           </div>
         </div>
-        <div className="flex horizontal">
-          <div className="flex-1">
-            <FormSimples
-              value={neighborhood}
-              name="bairro"
-              placeholder="Bairro"
-              label="Bairro"
-              onChange={(e) =>
-                this.onChangeInput("neighborhood", e.target.value)
-              }
-            />
-          </div>
-          <div className="flex-1">
-            <FormSimples
-              value={complement}
-              name="complemento"
-              placeholder="Complemento"
-              label="Complemento"
-              onChange={(e) => this.onChangeInput("complement", e.target.value)}
-            />
-          </div>
+        <div className="flex-1">
+          <TextField
+            required
+            id="outlined-required"
+            label="Bairro"
+            variant="standard"
+            fullWidth={true}
+            value={neighborhood}
+            onChange={(e) => this.onChangeInput("neighborhood", e.target.value)}
+          />
+        </div>
+        <div className="flex-1">
+          <TextField
+            required
+            id="outlined-required"
+            label="Complemento"
+            variant="standard"
+            fullWidth={true}
+            value={complement}
+            onChange={(e) => this.onChangeInput("complement", e.target.value)}
+          />
         </div>
         <div className="flex horizontal">
           <div className="flex-1">
-            <FormSimples
+            <TextField
+              required
+              id="outlined-required"
               label="Cidade"
+              variant="standard"
+              fullWidth={true}
               value={city}
-              name="cidade"
-              placeholder="Cidade"
-              label="Cidade"
               onChange={(e) => this.onChangeInput("city", e.target.value)}
             />
           </div>
-          <div className="form-input">
-            <label>Estado</label>
-            <select
-              name="state_code"
-              value={state_code}
-              onChange={(e) => this.onChangeInput("state_code", e.target.value)}
-            >
-              <option>Selecione seu estado</option>
-              {Object.keys(ESTADOS).map((abbr) => (
-                <option key={abbr}>{ESTADOS[abbr]}</option>
-              ))}
-            </select>
+          <div>
+            <Autocomplete
+              value={state_code || ""}
+              id="outlined-required"
+              options={ESTADOS}
+              getOptionLabel={(option) =>
+                state_code.length ? state_code : option.uf
+              }
+              select
+              variant="outlined"
+              onChange={(event, newValue) =>
+                this.onChangeInput("state_code", newValue)
+              }
+              fullWidth={true}
+              renderInput={(params) => (
+                <TextField required {...params} label="UF" variant="standard" />
+              )}
+            />
           </div>
         </div>
       </div>
@@ -238,7 +269,7 @@ class CadastroContainer extends Component {
           {!this.state.showAddressInput ? (
             <div className="flex flex-center">
               <button
-                className="btn btn-primary"
+                className="btn btn-primary button-responsive"
                 onClick={() => this.showAddressInput()}
               >
                 {"CONTINUAR"}
@@ -247,7 +278,7 @@ class CadastroContainer extends Component {
           ) : (
             <div className="flex flex-center">
               <button
-                className="btn btn-primary"
+                className="btn btn-primary button-responsive"
                 onClick={() => this.handleRegistryCustomer()}
               >
                 {"CADASTRAR"}
