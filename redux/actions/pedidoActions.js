@@ -74,7 +74,6 @@ export const createOrder = async (payload) => {
       order,
       getHeaders(payload.token)
     );
-    console.log(createOrder, "createdOrder");
     return createdOrder;
   } catch (e) {
     console.log(errorHandling(e));
@@ -103,6 +102,7 @@ export const fetchPedido = (id, token) => (dispatch) => {
   axios
     .get(`${API}/stores/${loja}/orders/me/${id}`, getHeaders(token))
     .then((response) => {
+      console.log(response, token, id, "actions")
       dispatch({ type: FETCH_PEDIDO, payload: response.data });
     })
     .catch((e) => console.log(e));

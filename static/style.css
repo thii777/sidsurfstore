@@ -1161,8 +1161,8 @@ i.fa-star {
 
 .componentes-container {
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
+  justify-content: center;
+  gap: 60px;
 }
 @media screen and (min-width: 320px) and (max-width: 720px) {
   .componentes-container {

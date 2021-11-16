@@ -7,7 +7,6 @@ import DadosPedido from "./DadosPedido";
 import CheckoutButton from "./CheckoutButton";
 
 class CheckoutContainerFinal extends Component {
-
   render() {
     return (
       <div className="checkout container">
@@ -18,7 +17,7 @@ class CheckoutContainerFinal extends Component {
           <DadosPagamento />
           <DadosPedido />
         </div>
-      
+        {/* <CheckoutButton />pedido.order.Id */}
       </div>
     );
   }

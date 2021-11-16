@@ -189,7 +189,7 @@ class AtualizacaoDadosEntrega extends Component {
               onChange={(e) => this.onChange("cidade", e)}
             />
           </div>
-          <div className="estado-input">
+          {/* <div className="estado-input">
             <TextField
               id="outlined-select-currency-native"
               select
@@ -207,7 +207,7 @@ class AtualizacaoDadosEntrega extends Component {
                 </option>
               ))}
             </TextField>
-          </div>
+          </div> */}
         </div>
         <Link href="/checkoutFinal">
         <button
