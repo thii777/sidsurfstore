@@ -1,25 +1,44 @@
 import React, { Component } from "react";
 import FormSimples from "../../components/Inputs/FormSimples";
+import { formatMoney } from "../../utils/";
 
+const dataShipping = [
+  {
+    value: 22,
+    deadLine: 2,
+    type: "Sedex",
+  }
+];
 
 class DeliveryCalculator extends Component {
   state = {
     zipcode: "",
-    isDeliveryCalculated: false
-  }
+    isDeliveryCalculated: false,
+  };
 
   calculate() {
-    //chamar api do correio 
+    //chamar api do correio
     //validar se frete foi calculado
-    let shipmentExist = true
-    
-    if(shipmentExist) {
-      this.setState({ isDeliveryCalculated: true })
+    let shipmentExist = true;
+
+    if (shipmentExist) {
+      this.setState({ isDeliveryCalculated: true });
     }
   }
 
+  renderShippingResult() {
+    return dataShipping.map((shipping) => {
+      return (
+        <div className="delivery-calculated">
+          <i className="fa fa-truck"></i>
+          <p>{formatMoney(shipping.value)}</p>
+          <p>{`${shipping.type}, prazo ${shipping.deadLine} dias uteis`}</p>
+        </div>
+      );
+    });
+  }
+
   render() {
-    console.log(this.state, "state")
     return (
       <div className="delivery-calculator">
         <div className="delivery-container">
@@ -36,16 +55,16 @@ class DeliveryCalculator extends Component {
               />
             </div>
 
-            <button className="btn-mobile btn-success" onClick={() => this.calculate()}>Calcular</button>
+            <button
+              className="btn-mobile btn-success"
+              onClick={() => this.calculate()}
+            >
+              OK
+            </button>
           </div>
-          {this.state.isDeliveryCalculated == true ?
-            <div className="delivery-calculated">
-              <i className="fa fa-truck"></i>
-              <p>22</p>
-              <p>PAC, entrega em 3 dias uteis</p>
-            </div>
-            : ""
-          }
+          {this.state.isDeliveryCalculated == true
+            ? this.renderShippingResult()
+            : ""}
         </div>
       </div>
     );

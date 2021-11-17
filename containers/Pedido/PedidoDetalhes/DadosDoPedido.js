@@ -27,7 +27,7 @@ class DadosDoPedido extends Component {
       <div className="flex-3">
         <h4 className="headline">{`DADOS DO CLIENTE`}</h4>
         <br />
-        <TextoDados
+        {/* <TextoDados
           chave="Nome"
           valor={pedido && pedido.order.customer.userName}
         />
@@ -39,18 +39,18 @@ class DadosDoPedido extends Component {
         <TextoDados
           chave="Data de Nascimento"
           valor={pedido && pedido.order.customer.dateOfBirth}
-        />
+        /> */}
       </div>
     );
   }
 
   renderDadosDeEntrega() {
-    const { pedido } = this.props;
+    // const { pedido } = this.props;
     return (
       <div className="flex-3">
         <h4 className="headline">DADOS ENTREGA</h4>
         <br />
-        <TextoDados
+        {/* <TextoDados
           chave="Endereço"
           valor={`${pedido && pedido.order.address.street} ${
             pedido && pedido.order.address.number
@@ -71,11 +71,11 @@ class DadosDoPedido extends Component {
         <TextoDados
           chave="Estado"
           valor={pedido && pedido.order.address.state}
-        />
-        <TextoDados
+        /> */}
+        {/* <TextoDados
           chave="CEP"
           valor={pedido && pedido.order.address.zipcode}
-        />
+        /> */}
       </div>
     );
   }

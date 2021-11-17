@@ -25,7 +25,6 @@ class CarrinhoContainer extends Component {
   render() {
     return (
       <div className="container Carrinho">
-        <br />
         <ListaDeProdutos />
         <DeliveryCalculator /> 
         <DadosDoCarrinho />
