@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { formatMoney } from "../../../utils";
-import TextoDados from "../../../components/Texto/Dados";
+// import TextoDados from "../../../components/Texto/Dados";
 
 import TabelaSimples from "../../../components/Tabela/Simples";
 import actions from "../../../redux/actions";
