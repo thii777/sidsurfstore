@@ -156,6 +156,15 @@ class DadosDoCarrinho extends Component {
       <div className="dados-do-carrinho-container flex-3">
         <div className="dados-do-carrinho-item flex">
           <div className="flex-1">
+            <p className="headline">Valor do Pedido:</p>
+          </div>
+          <div className="flex-1 flex flex-center">
+            {formatMoney(valorTotal)}
+          </div>
+        </div>
+        {/* <Frete /> */}
+        <div className="dados-do-carrinho-item flex">
+          <div className="flex-1">
             <p className="headline">Valor Total:</p>
           </div>
           <div className="flex-1 flex flex-center">

@@ -1318,6 +1318,84 @@ i.fa-star {
   min-width: 30%;
 }
 
+/* SUCCESS */
+
+.success-container {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.success-components {
+  display: flex;
+  flex-direction: column;
+  min-width: 40%;
+}
+
+.success-title {
+  background: #1ABD00;
+  color: #ffffff;
+}
+
+.success-title_h2 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 13px 0;
+}
+
+.finished-each-box{
+  background: #F5F5F5;
+  margin: 10px 0;
+  height: 150px;
+}
+
+.finished-title {
+  display: flex;
+  border-bottom: 1px solid #C9C9C9;
+  padding: 20px 0;
+  margin: 0 30px;
+}
+
+.finished-title p {
+  font-size: 30px;
+  line-height: 24px;
+  color: #1ABD00;
+  margin-left: 10%;
+}
+
+.finished-each-box span {
+  font-size: 18px;
+} 
+
+.finished-button {
+  padding-top: 25px;
+}
+
+.finished-button button {
+  background: #F5F5F5;
+  color: #1ABD00;
+  border: 1px solid #1ABD00;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 10px 0;
+  min-width: 60%;
+  cursor: pointer;
+}
+
+.finished-deadline {
+  padding: 20px 0;
+  margin: 0 30px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.finished-payment {
+  display: flex;
+  padding: 20px 0;
+  margin: 0 30px;
+}
+
 /* MODAL */
 
 .modal {
@@ -1371,6 +1449,13 @@ i.fa-star {
 
 .modalTest h4 {
   margin-bottom: 5px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+  .modal > div {
+    width: 80% !important;
+  }
+  
 }
 
 /* MINHA CONTA */
@@ -1589,3 +1674,6 @@ table.simples td {
     /* gap: 20px */
   }
 }
+
+
+

@@ -8,26 +8,19 @@ import DeliveryDetails from "./DeliveryDetails";
 class UpdateOrCreateNewDelivery extends Component {
   render() {
     return (
-      <div className="checkout container">
-        <div className="checkout-title flex flex-center">
-          <h2>Pedido concluido</h2>
+      <div className="success-container">
+        <div className="success-components">
+          <div className="success-title flex flex-center">
+            <h2 className="success-title_h2">Pedido realizado com sucesso</h2>
+          </div>
+          <div className="finished-order">
+            <OrderNumber />
+            <PaymentForm />
+            <DeliveryDetails />
+            <DadosPedido />
+          </div>
         </div>
-        <div className="checkout-title flex flex-center">
-          <p>
-            Obá, seu pedido foi concluido com sucesso e será entregue em até 3
-            dias uteis, Você receberá atualizaçoes sobre o seu pedido por email
-            e também poderá acompanhar aqui no site na aba dos meus pedidos
-          </p>
-        </div>
-        <br />
-        <br />
-        <br />
-        <div className="finished-order container">
-          <OrderNumber />
-          <PaymentForm />
-          <DeliveryDetails />
-          <DadosPedido />
-        </div>
+
       </div>
     );
   }

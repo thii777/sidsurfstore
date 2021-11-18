@@ -14,18 +14,6 @@ export default () => (
       font-family: 'Roboto', sans-serif;
     }
 
-    .finished-order {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .finished-order .finished-each-box{
-      background: blue;
-      margin: 10px 0;
-      height: 200px
-  }
-
     .container, 
     .container-big {
       width: calc(100% - 20px);
@@ -51,12 +39,6 @@ export default () => (
       display: flex;
       align-items: center;
       justify-content: center
-    }
-
-    .flex-space { 
-      display: flex;
-      justify-content: space-between;
-      align-items: center
     }
 
     .validate {

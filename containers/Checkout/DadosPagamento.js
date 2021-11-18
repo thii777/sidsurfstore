@@ -68,10 +68,11 @@ class DadosPagamento extends Component {
     ) {
       this.setState({ orderProcess: "APPROVED" });
 
-      if (this.state.orderProcess == "APPROVED")
+      if (this.state.orderProcess == "APPROVED") {
         toast.success("Pedido realizado com sucesso ;)");
-      return;
-      //REDIRECIONAR PARA A PAGINA DE SUCESSO;
+        Router.push("/OrderFinishedPage");
+        return
+      }
     }
     // cleanCarrinho();
 
@@ -289,15 +290,15 @@ class DadosPagamento extends Component {
           this.renderPagamentoComBoleto()}
         {opcaoPagamentoSelecionado === "cartao" &&
           this.renderPagamentoComCartao()}
-        <div className="flex flex-right Button-payment-responsive">
-          {/* <Link href="/OrderFinishedPage"> */}
-          <button
-            className="btn btn-cta btn-success button-responsive"
-            onClick={() => this.orderFinish()}
-          >
-            <span>CONCLUIR PEDIDO</span>
-          </button>
-          {/* </Link> */}
+        <div className="flex flex-right">
+          <Link href="/OrderFinishedPage">
+            <button
+              className="btn btn-cta btn-success button-responsive"
+              onClick={() => this.orderFinish()}
+            >
+              <span>CONCLUIR PEDIDO</span>
+            </button>
+          </Link>
         </div>
         <ToastContainer
           position="top-center"

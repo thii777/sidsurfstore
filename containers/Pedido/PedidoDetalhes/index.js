@@ -9,11 +9,10 @@ class PedidoDetalhes extends Component {
 
   render() {
     const { pedido } = this.props;
-    console.log(this.props, "props")
     return (
       <div className="flex-4 conteudo-area-cliente">
         <div className="flex-space">
-          <h2>{`PEDIDO ${pedido && pedido.order &&  pedido.order.Id}`}</h2>
+          <h2>{`PEDIDO ${pedido && pedido.order.Id}`}</h2>
           <button className="btn btn-primary btn-sm">CANCELAR PEDIDO</button>
         </div>
         <br/>
