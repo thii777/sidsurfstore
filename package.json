@@ -37,5 +37,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "xxxxx": "^1.0.3"
   }
 }
