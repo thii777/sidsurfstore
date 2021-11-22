@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'next/router';
 
 import DadosPedido from "../Checkout/DadosPedido";
 import OrderNumber from "./OrderNumber";
@@ -6,7 +7,10 @@ import PaymentForm from "./PaymentForm";
 import DeliveryDetails from "./DeliveryDetails";
 
 class UpdateOrCreateNewDelivery extends Component {
+
   render() {
+    const { id } = this.props.router.query
+
     return (
       <div className="success-container">
         <div className="success-components">
@@ -26,4 +30,4 @@ class UpdateOrCreateNewDelivery extends Component {
   }
 }
 
-export default UpdateOrCreateNewDelivery;
+export default withRouter(UpdateOrCreateNewDelivery);
