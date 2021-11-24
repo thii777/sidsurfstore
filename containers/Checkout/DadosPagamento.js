@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Link from "next/link";
+import Router from 'next/router';
 import { connect } from "react-redux";
 import actions from "../../redux/actions";
 import { createOrder } from "../../redux/actions/pedidoActions";
@@ -44,12 +44,11 @@ class DadosPagamento extends Component {
     //CREDENTIALS
     token: "",
     orderProcess: "AWAITING",
+    orderId: ""
   };
 
   async orderFinish() {
     this.setState({ orderProcess: "PROCESSING" });
-
-    const { cleanCarrinho } = this.props;
 
     const processOrderResponse = await createOrder(this.state);
 
@@ -60,7 +59,8 @@ class DadosPagamento extends Component {
       return toast.error("Erro ao processar pagamento");
     }
 
-    const { paymentResponse } = processOrderResponse.data;
+    const { paymentResponse, orderId } = processOrderResponse.data;
+    this.setState({ orderId: orderId })
 
     if (
       paymentResponse.message == "SUCESSO" ||
@@ -70,7 +70,7 @@ class DadosPagamento extends Component {
 
       if (this.state.orderProcess == "APPROVED") {
         toast.success("Pedido realizado com sucesso ;)");
-        Router.push("/OrderFinishedPage");
+      Router.push(`/OrderFinishedPage?id=${orderId}`);
         return
       }
     }
@@ -279,7 +279,10 @@ class DadosPagamento extends Component {
   }
 
   render() {
-    const { opcaoPagamentoSelecionado } = this.state;
+    const { opcaoPagamentoSelecionado, orderId } = this.state;
+
+    console.log("ORDER", orderId)
+
     if (this.state.orderProcess == "PROCESSING")
       toast.loading("Processando pagamento...");
     if (this.state.orderProcess !== "PROCESSING") toast.dismiss();
@@ -291,14 +294,13 @@ class DadosPagamento extends Component {
         {opcaoPagamentoSelecionado === "cartao" &&
           this.renderPagamentoComCartao()}
         <div className="flex flex-right">
-          <Link href="/OrderFinishedPage">
+    
             <button
               className="btn btn-cta btn-success button-responsive"
               onClick={() => this.orderFinish()}
             >
               <span>CONCLUIR PEDIDO</span>
             </button>
-          </Link>
         </div>
         <ToastContainer
           position="top-center"

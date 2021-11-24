@@ -103,6 +103,7 @@ export const fetchPedido = (id, token) => (dispatch) => {
   axios
     .get(`${API}/stores/${loja}/orders/me/${id}`, getHeaders(token))
     .then((response) => {
+      console.log(response, "RESPONSE")
       dispatch({ type: FETCH_PEDIDO, payload: response.data });
     })
     .catch((e) => console.log(e));
