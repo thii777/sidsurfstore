@@ -597,7 +597,7 @@
 }
 
 .produto-image {
-  height: 250px;
+  max-height: 250px;
 }
 
 .produto-title {
@@ -1278,7 +1278,7 @@ i.fa-star {
 
 .Dados-Pedido-Container {
   padding-top: 10px;
-  width: 37%;
+  min-width: 37%;
 }
 
 .Dados-Pedido-Container span {
@@ -1286,6 +1286,12 @@ i.fa-star {
   line-height: 24px;
   font-weight: 400;
   color: #999999;
+}
+
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .resumo_pedido {
