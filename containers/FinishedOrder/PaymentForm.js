@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { formatMoney } from '../../utils';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 
 class PaymentForm extends Component {
 
   render() {
-    const { payment } = this.props;
-    const install = payment && payment.installment ? payment.installment : "";
+    let { payment } = this.props;
+    const install = payment && payment.installment;
+    const value = payment && install ? parseFloat(payment.value / install) : payment && payment.value
+    payment = payment && payment.paymentForm;
+    const credCard = payment === "CREDIT_CARD"
 
     return (
       <div className="finished-each-box">
@@ -13,10 +19,10 @@ class PaymentForm extends Component {
         </div>
         <div className="finished-payment">
           <div className="flag">
-            {/* <p>{payment.paymentForm}</p> */}
+            <p>{credCard ? <CreditCardIcon /> : <ReceiptIcon />}</p>
           </div>
           <div className="value">
-            {/* <p>{`Em ${install ? install : "1x"} de ${install ? payment.value / install : payment.value}`}</p> */}
+            <p className="finished-paragraph">{`Em ${install ? install : "1"}x de ${formatMoney(value)}`}</p>
           </div>
         </div>
       </div>

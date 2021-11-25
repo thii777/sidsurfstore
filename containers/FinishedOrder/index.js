@@ -22,7 +22,7 @@ class UpdateOrCreateNewDelivery extends Component {
   
   render() {
     console.log(this.props, "thissss")
-    const { Id, payment } = this.props.pedido && this.props.pedido.order ? this.props.pedido.order : ""
+    const { Id, payment, shipping} = this.props.pedido && this.props.pedido.order ? this.props.pedido.order : ""
 
     return (
       <div className="success-container">
@@ -33,7 +33,7 @@ class UpdateOrCreateNewDelivery extends Component {
           <div className="finished-order">
             <OrderNumber orderId={Id} />
             <PaymentForm payment={payment}/>
-            <DeliveryDetails />
+            <DeliveryDetails shipping={shipping}/>
             <DadosPedido />
           </div>
         </div>

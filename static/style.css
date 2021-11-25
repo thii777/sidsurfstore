@@ -1163,7 +1163,7 @@ i.fa-star {
 
 .componentes-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 60px;
 }
 @media screen and (min-width: 320px) and (max-width: 720px) {
@@ -1400,6 +1400,11 @@ i.fa-star {
   display: flex;
   padding: 20px 0;
   margin: 0 30px;
+  align-items: center;
+}
+
+.finished-paragraph {
+  padding-left: 10px;
 }
 
 /* MODAL */
